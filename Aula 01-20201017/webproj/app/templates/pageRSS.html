@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<table class="table table-striped">
+    <tbody>
+
+        {% for k,v in curso.items %}
+            <tr>
+            {% if k == 'Departamentos' %}
+                <td><a href="{%  url 'departamento' %}">{{ k }}:</a>
+            {%  for d in v %}
+                <ul>
+                <li><a href="{%  url 'cursoDepart' %}?depart={{ d }}" >{{ d }}</a></li>
+                </ul>
+            {% endfor %}
+             </td>
+            {% elif k == 'Areascientificas' %}
+                <td>{{ k }}:
+                {% for a in v %}
+                    <ul>
+                    <li>{{ a }}</li>
+                    </ul>
+                {% endfor %}
+                </td>
+            {% else %}
+                <td>{{ k }}: {{ v }}</td>
+            {% endif %}
+            </tr>
+        {%  endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

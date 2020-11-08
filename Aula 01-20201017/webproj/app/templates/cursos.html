@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+</head>
+
+<h2> {{ frase }} </h2>
+
+<table class="table table-striped">
+    <tbody>
+    {% for k,v in cursos.items %}
+    <tr>
+        <td>
+            <a href="{% url 'curso' %}?guid={{ k }}">{{ v }} </a> {{ k }}
+        </td>
+    </tr>
+    {%  endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

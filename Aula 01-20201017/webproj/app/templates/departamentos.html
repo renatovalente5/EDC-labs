@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2> {{ frase }} </h2>
+
+<table class="table table-striped">
+    <tbody>
+    {% for k,v in depart.items %}
+    <tr>
+        <td>
+            {{ k }}
+            {% for d in v %}
+            <ul>
+            <li><a href="{%  url 'cursoDepart' %}?depart={{ d }}" >{{ d }}</a></li>
+            </ul>
+            {%  endfor %}
+        </td>
+    </tr>
+    {%  endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
