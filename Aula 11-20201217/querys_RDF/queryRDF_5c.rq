@@ -1,0 +1,11 @@
+# 5. Inferência do tipo Movie através do CONSTRUCT
+# Neste caso não há inserção na triplestore, é necessário fazer um INSERT posterior dos resultados 
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX movt: <http://movies.org/types/>
+PREFIX mov:  <http://movies.org/pred/>
+
+INSERT { ?s rdf:type movt:Movie }
+WHERE {
+    ?s mov:directed_by ?d .
+}

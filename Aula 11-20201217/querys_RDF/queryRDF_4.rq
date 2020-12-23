@@ -1,0 +1,17 @@
+# 4. Descrição total de um filme, dado o seu nome - DESCRIBE
+
+#PREFIX mov: <http://movies.org/pred/>
+#DESCRIBE ?film 
+#WHERE { 
+#	?film  mov:name "1492 Conquest of Paradise" .
+#}
+
+#OR
+
+# 4. Descrição total de um filme, dado o seu nome - SELECT
+PREFIX mov: <http://movies.org/pred/>
+SELECT ?s ?p ?o
+WHERE {
+    ?s mov:name "1492 Conquest of Paradise" .
+	?s ?p ?o .
+}

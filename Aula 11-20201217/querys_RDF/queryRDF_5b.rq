@@ -1,0 +1,11 @@
+# Consulta de todos os filmes pelo tipo Movie
+
+PREFIX mov: <http://movies.org/pred/>
+PREFIX movt: <http://movies.org/types/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?fname
+WHERE {
+    ?film rdf:type movt:Movie .
+    ?film mov:name ?fname .
+}

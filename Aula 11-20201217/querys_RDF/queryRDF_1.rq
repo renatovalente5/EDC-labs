@@ -1,0 +1,6 @@
+# 1.Conjunto de Predicados
+
+SELECT DISTINCT ?predicate
+WHERE {
+	?subject ?predicate ?object .
+}

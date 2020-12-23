@@ -8,12 +8,15 @@ import os
 from BaseXClient import BaseXClient
 import xmltodict
 from urllib.request import urlopen
+from app.simplegraph import SimpleGraph
+
 #import argparse
 #import urllib2
 
 
 xml = etree.parse('app/cursos.xml')
 url = "http://acesso.ua.pt/xml/curso.v5.asp?i="
+_graph = SimpleGraph()
 
 session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
@@ -204,3 +207,37 @@ def pageRSS(request):
     html = mostrar(tree.getroot(), "\t")
     return HttpResponse(html)
     #return render(request, "pageRSS.html", tparams)
+
+
+################################# AULA 9 #######################################
+def movies(request):
+    _graph.load("Aula9-simplegraph/movies.csv")
+    lista = _graph.query( [('?film','directed_by', '?real'),
+                           ('?real','name','?realname')
+                           ] )
+    conj = set()
+    for a in lista:
+        conj.add(a['realname'])
+    sorted(conj)
+
+    tparams = {
+        'movies': conj,
+        'frase': "Nomes dos realizadores de filmes:",
+    }
+    return render(request, "movies.html", tparams)
+
+def moviesExe1(request):
+    _graph.load("Aula9-simplegraph/movies.csv")
+    lista = _graph.query( [('?film','directed_by', '?real'),
+                           ('?film', 'name', '?filmname')
+                           ] )
+    conj = set()
+    for a in lista:
+        conj.add(a['filmname'])
+    sorted(conj)
+
+    tparams = {
+        'movies': conj,
+        'frase': "Lista de filmes:",
+    }
+    return render(request, "movies.html", tparams)

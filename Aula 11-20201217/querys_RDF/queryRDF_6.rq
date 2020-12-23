@@ -1,0 +1,21 @@
+# 6. Inferência e classificação profissional das pessoas (rdf:type Director e rdf:type Actor)
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX movt: <http://movies.org/types/>
+PREFIX mov:  <http://movies.org/pred/>
+
+CONSTRUCT #INSERT
+{
+    ?d rdf:type movt:Direct .
+    ?a rdf:type movt:Actor .
+}
+WHERE
+{
+    {
+        ?f1 mov:directed_by ?d
+    }
+    UNION
+    {
+        ?f1 mov:starring ?a
+    }
+}

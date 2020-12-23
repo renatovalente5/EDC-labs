@@ -1,0 +1,13 @@
+# Obtenção dos nomes das entidades associadas ao filme
+PREFIX mov: <http://movies.org/pred/>
+SELECT ?o ?oname
+WHERE { 
+    {
+        SELECT ?s ?p ?o
+        WHERE {
+            ?s mov:name "1492 Conquest of Paradise" .
+            ?s ?p ?o .
+        }
+    }
+    ?o mov:name ?oname
+}

@@ -1,0 +1,10 @@
+# 2.Pesquisa de filmes realizados por um Realizador, dado o seu nome
+
+PREFIX mov: <http://movies.org/pred/>
+
+SELECT ?fname
+WHERE {
+    ?real mov:name "Ridley Scott" .
+    ?film mov:directed_by ?real .
+    ?film mov:name ?fname .
+}

@@ -46,4 +46,8 @@ urlpatterns = [
 
 ################################# AULA 5 #######################################
     path('pageRSS/', views.pageRSS, name='pageRSS'),
+
+################################# AULA 9 #######################################
+    path('movies/', views.movies, name='movies'),
+    path('moviesExe1/', views.moviesExe1, name='moviesExe1'),
 ]

@@ -1,0 +1,10 @@
+#3. Pesquisa de atores com participação num filme, dado o seu nome
+
+PREFIX mov: <http://movies.org/pred/>
+
+SELECT ?aname 
+WHERE { 
+	?film  mov:name 	"1492 Conquest of Paradise" .
+    ?film  mov:starring ?actor .
+    ?actor mov:name 	?aname .
+}
